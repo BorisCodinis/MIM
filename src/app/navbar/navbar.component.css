@@ -1,0 +1,9 @@
+.navbar-logo{
+  position: relative;
+  width: 70px;
+  max-height: 70px; /* height of the navbar */
+}
+
+.navbar-title{
+  font-size: 25pt;
+}
