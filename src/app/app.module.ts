@@ -11,6 +11,7 @@ import { KontaktComponent } from './kontakt/kontakt.component';
 import { SpendenComponent } from './spenden/spenden.component';
 import { ImpressumComponent } from './impressum/impressum.component';
 import { StartseiteComponent } from './startseite/startseite.component';
+import { ChronikelementComponent } from './chronikelement/chronikelement.component';
 
 
 const appRoutes: Routes = [
@@ -47,7 +48,8 @@ const appRoutes: Routes = [
     KontaktComponent,
     SpendenComponent,
     ImpressumComponent,
-    StartseiteComponent
+    StartseiteComponent,
+    ChronikelementComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

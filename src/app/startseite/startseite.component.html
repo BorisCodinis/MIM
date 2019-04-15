@@ -2,19 +2,53 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
-
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
-<a class="align-text-bottom"> Photo by rawpixel.com from Pexels</a>
+<div class="container-fluid">
+  <div class="form-inline">
+    <!-- Trigger the modal with a button -->
+    <div class="form-inline">
+      <button class="btn btn-primary" data-toggle="modal" data-target="#newChronikItem"><i class="fa fa-plus"></i>
+        hinzufügen
+      </button>
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="newChronikItem">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Neue Aufgabe hinzufügen</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="">
+              <div class="form-group">
+                <label for="title">
+                  Titel:
+                </label>
+                <input type="text" class="form-control form-control-lg" name="title" id="title">
+              </div>
+              <div class="form-group">
+                <label for="description">
+                  Inhalt:
+                </label>
+                        <textarea class="form-control" name="description" id="description" rows="10"
+                                  placeholder="Beschreibung"></textarea>
+              </div>
+              <div class="form-group ">
+                <label for="duedate">
+                  Fälligkeitsdatum:
+                </label>
+                <input type="datetime-local" class="form-control form-control-sm" name="duedate" id="duedate">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+            <button type="button" class="btn btn-primary">Speichern</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <app-chronikelement class=""></app-chronikelement>
+</div>
