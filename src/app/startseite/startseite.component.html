@@ -21,7 +21,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form action="">
+            <form action="" id="add-chronikelement">
               <div class="form-group">
                 <label for="title">
                   Titel:
@@ -45,10 +45,27 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
-            <button type="button" class="btn btn-primary">Speichern</button>
+            <button type="button" class="btn btn-primary" (click)="fbPostData(titel, subtitel, inhalt)">Speichern</button>
           </div>
         </div>
       </div>
     </div>
-  <app-chronikelement class=""></app-chronikelement>
+    <div id="Chronikelementlist">
+      <app-chronikelement class=""></app-chronikelement>
+    </div>
+    </div>
 </div>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyCdtpRg5LqS7aBIcM6CfyBl_E4U4LHVR0M",
+      authDomain: "mim-webseite.firebaseapp.com",
+      databaseURL: "https://mim-webseite.firebaseio.com",
+      projectId: "mim-webseite",
+      storageBucket: "",
+      messagingSenderId: "126443374488"
+    };
+    firebase.initializeApp(config);
+    db = firebase.firestore();
+    db.settings({ timestampsInSnapshots: true })
+  </script>

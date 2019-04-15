@@ -12,7 +12,12 @@ import { SpendenComponent } from './spenden/spenden.component';
 import { ImpressumComponent } from './impressum/impressum.component';
 import { StartseiteComponent } from './startseite/startseite.component';
 import { ChronikelementComponent } from './chronikelement/chronikelement.component';
-
+import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
+import {environment} from '../environments/environment';
+import {CommonModule} from '@angular/common';
+import {ReactiveFormsModule} from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: 'start', component: StartseiteComponent },
@@ -52,10 +57,12 @@ const appRoutes: Routes = [
     ChronikelementComponent
   ],
   imports: [
+    // AngularFireModule.initializeApp(environment.firebase),
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     AngularFontAwesomeModule
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })
