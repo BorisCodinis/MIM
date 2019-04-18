@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
-import {emitKeypressEvents} from 'readline';
+
 
 
 const elementList: string [][] = new Array();
@@ -43,8 +43,6 @@ db.collection('Chronikelemente').get().then((snapshot) => {
   snapshot.docs.forEach(doc => {
     fillList(doc, ind);
     ind++;
-    console.log(elementList.pop());
-    console.log(elementList.pop());
     console.log(elementList.pop());
     console.log(elementList.pop());
     console.log(elementList.pop());
