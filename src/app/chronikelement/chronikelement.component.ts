@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase';
+import {emitKeypressEvents} from 'readline';
 
-const chronikelementlist = document.querySelector('#Chronikelementlist');
 
-function renderChronikelements(doc) {
-  const card = document.createElement('card');
+const elementList: string [][] = new Array();
+// const elementList = new Array<Array<string>>();
+
+function fillList(doc, ind) {
+  elementList.push(doc.data().titel.toString());
+  elementList.push(doc.data().subtitel.toString());
+  elementList.push(doc.data().inhalt.toString());
+  /*const card = document.createElement('card');
   card.setAttribute('data-id', doc.id);
   const titel = document.createElement('h2');
   const subtitel = document.createElement('h5');
@@ -19,7 +24,7 @@ function renderChronikelements(doc) {
   card.appendChild(subtitel);
   card.appendChild(inhalt);
 
-  chronikelementlist.appendChild(card);
+  // chronikelementlist.appendChild(card);*/
 }
 
 
@@ -34,18 +39,21 @@ const config = {
 firebase.initializeApp(config);
 const db = firebase.firestore();
 db.collection('Chronikelemente').get().then((snapshot) => {
+  let ind = 0;
   snapshot.docs.forEach(doc => {
-    renderChronikelements(doc);
+    fillList(doc, ind);
+    ind++;
+    console.log(elementList.pop());
+    console.log(elementList.pop());
+    console.log(elementList.pop());
+    console.log(elementList.pop());
+    console.log(elementList.pop());
   });
 });
 
 
-
-
-
-
 class Chronikelement {
-  constructor(public titel, public subtitel, public inhalt) {}
+  constructor() {}
 }
 
 
