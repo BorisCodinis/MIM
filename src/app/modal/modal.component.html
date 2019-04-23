@@ -1,0 +1,41 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="newChronikItem">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Neue Aufgabe hinzufügen</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form (ngSubmit)="onSubmit()" id="add-chronikelement">
+              <div class="form-group">
+                <label for="title">
+                  Titel:
+                </label>
+                <input type="text" class="form-control form-control-lg" name="title" id="title">
+              </div>
+              <div class="form-group ">
+                <label for="subtitel">
+                  Subtitel:
+                </label>
+                <input type="text" class="form-control form-control-lg" name="subtitel" id="subtitel">
+              </div>
+              <div class="form-group">
+                <label for="description">
+                  Inhalt:
+                </label>
+                        <textarea class="form-control" name="description" id="description" rows="10"
+                                  placeholder="Beschreibung"></textarea>
+              </div>
+
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+            <button type="button" class="btn btn-primary" (click)="fbPostData(titel, subtitel, inhalt)">Speichern</button>
+          </div>
+        </div>
+      </div>
+    </div>
+

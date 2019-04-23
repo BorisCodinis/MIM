@@ -21,6 +21,7 @@ import {environment} from '../environments/environment';
 import {CommonModule} from '@angular/common';
 import {ReactiveFormsModule} from '@angular/forms';
 import {FirestoreService} from './services/firestore_service';
+import { ModalComponent } from './modal/modal.component';
 
 
 const appRoutes: Routes = [
@@ -59,6 +60,7 @@ const appRoutes: Routes = [
     ImpressumComponent,
     StartseiteComponent,
     ChronikelementComponent,
+    ModalComponent,
     // FirestoreService
   ],
   imports: [

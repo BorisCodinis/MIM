@@ -1,2 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+.card {
+  max-width: 100%;
+  min-width: 100%;
+}
+
+.card-text {
+  word-wrap: break-word;
+}
+
+ul{
+  list-style-type: none;
+}
+
+@media (min-width: 576px){
+
+}
+
+@media (min-width: 768px){
+
+}
+
+@media (min-width: 992px){
+
+}
+
+@media (min-width: 1200px){
+
+}

@@ -1,11 +1,26 @@
-<div *ngIf="chronikelemente?.lenght > 0;else noItems" class="card">
-  <div *ngFor="let element of chronikelemente" class="card-body"  id="Chronikelementlist">
-  <h2 class="card-title">{{ element.titel }}</h2>
-    <h5 class="card-subtitle mb-2 text-muted"> {{ element.subtitel }}</h5>
-  <p class="card-text">{{ element.inhalt }}</p>
-  </div>
-</div>
+<ul *ngFor="let element of chronikelemente">
+ <li>
+   <div class="card container-fluid p-lg-3 m-lg-1">
+      <h2 class="card-title ">{{ element.titel }}</h2>
+        <h5 class="card-subtitle mb-2 text-muted"> {{ element.subtitel }}</h5>
+      <p class="card-text text-break">{{ element.inhalt }}</p>
+   </div>
+ </li>
 
-<ng-template #noItems>
-  <h5>{{ chronikelemente.length }}</h5>
-</ng-template>
+</ul>
+
+
+
+
+
+<!---
+<div  class="container-fluid">
+  <div *ngFor="let element of chronikelemente" >
+    <div class="card p-lg-3 m-lg-1 container-fluid">
+      <h2 class="card-title ">{{ element.titel }}</h2>
+        <h5 class="card-subtitle mb-2 text-muted"> {{ element.subtitel }}</h5>
+      <p class="card-text">{{ element.inhalt }}</p>
+    </div>
+    </div>
+</div>
+--->
