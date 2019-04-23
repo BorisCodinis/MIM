@@ -12,12 +12,16 @@ import { SpendenComponent } from './spenden/spenden.component';
 import { ImpressumComponent } from './impressum/impressum.component';
 import { StartseiteComponent } from './startseite/startseite.component';
 import { ChronikelementComponent } from './chronikelement/chronikelement.component';
+
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireModule } from 'angularfire2';
 import {environment} from '../environments/environment';
 import {CommonModule} from '@angular/common';
 import {ReactiveFormsModule} from '@angular/forms';
+import {FirestoreService} from './services/firestore_service';
+
 
 const appRoutes: Routes = [
   { path: 'start', component: StartseiteComponent },
@@ -54,16 +58,20 @@ const appRoutes: Routes = [
     SpendenComponent,
     ImpressumComponent,
     StartseiteComponent,
-    ChronikelementComponent
+    ChronikelementComponent,
+    // FirestoreService
   ],
   imports: [
     // AngularFireModule.initializeApp(environment.firebase),
     RouterModule.forRoot(appRoutes),
     BrowserModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFirestoreModule
   ],
 
-  providers: [],
+  providers: [FirestoreService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
