@@ -124,7 +124,7 @@ export abstract class FirestoreService<T> {
 
 export class FirestoreService {
   itemsCollection: AngularFirestoreCollection<Chronikelement>;
-  items: Observable<Chronikelement[]>;
+  items: Observable<any[]>;
   constructor( private db: AngularFireDatabase, private afs: AngularFirestore) {
     this.items = this.afs.collection('Chronikelemente').valueChanges();
   }
