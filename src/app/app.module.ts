@@ -19,9 +19,10 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireModule } from 'angularfire2';
 import {environment} from '../environments/environment';
 import {CommonModule} from '@angular/common';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FirestoreService} from './services/firestore_service';
 import { ModalComponent } from './modal/modal.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 const appRoutes: Routes = [
@@ -61,7 +62,7 @@ const appRoutes: Routes = [
     StartseiteComponent,
     ChronikelementComponent,
     ModalComponent,
-    // FirestoreService
+    FooterComponent,
   ],
   imports: [
     // AngularFireModule.initializeApp(environment.firebase),
@@ -70,7 +71,8 @@ const appRoutes: Routes = [
     AngularFontAwesomeModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    FormsModule
   ],
 
   providers: [FirestoreService],

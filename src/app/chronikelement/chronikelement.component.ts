@@ -30,9 +30,7 @@ export class ChronikelementComponent implements OnInit {
 
   ngOnInit() {
     this.service.getChronikelemente().subscribe(items => {
-      console.log(items);
       this.chronikelemente = items;
-      console.log(this.chronikelemente.length);
     });
   }
 

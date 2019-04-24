@@ -1,7 +1,7 @@
 import {Inject, Injectable} from '@angular/core';
 import { AngularFirestore, QueryFn, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
 import {from, Observable} from 'rxjs';
-import { tap } from 'rxjs/operators';
+import {tap, timestamp} from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import * as firebase from 'firebase';
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -18,6 +18,7 @@ export class FirestoreService {
   items: Observable<any[]>;
 
   constructor( private db: AngularFireDatabase, private afs: AngularFirestore) {
+    this.itemsCollection = this.afs.collection('Chronikelemente');
     this.items = this.afs.collection('Chronikelemente').valueChanges();
   }
 
@@ -25,9 +26,8 @@ export class FirestoreService {
     return this.items;
   }
 
-  postChronikelement(titel: string, subtitel: string, inhalt: string) {
-
-
+  postChronikelement(element: Chronikelement) {
+    this.itemsCollection.add({titel: element.titel, subtitel: element.subtitel, inhalt: element.inhalt, ts: Date().big().toString()});
   }
 
 }
