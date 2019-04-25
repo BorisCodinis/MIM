@@ -3,11 +3,15 @@
     Welcome to {{ title }}!
   </h1>
 </div>
+<div class="justify-content-center">
+  <ngx-auth-firebaseui (onSuccess)="printUser($event)"
+                       (onError)="printError()">
+  </ngx-auth-firebaseui>
+</div>
 <div class="container-fluid">
-
-    <div class="float-right m-md-2">
-      <button class="btn btn-primary" data-toggle="modal" data-target="#newChronikItem"><i class="fa fa-plus"></i>
-        hinzufügen
+  <div class="float-right m-md-2">
+      <button *ngIf="authService.user$ | async" class="btn btn-primary" data-toggle="modal"  data-target="#newChronikItem"><i class="fa fa-plus"></i>
+        Hinzufügen
       </button>
     </div>
     <app-modal></app-modal>

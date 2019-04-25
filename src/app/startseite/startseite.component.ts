@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as firebase from 'firebase';
+import { AuthService } from "../services/auth.service";
 
 
 @Component({
@@ -12,7 +12,7 @@ import * as firebase from 'firebase';
 export class StartseiteComponent implements OnInit {
   title = 'Mensch Im Mittelpunkt';
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }

@@ -1,0 +1,9 @@
+<div *ngIf="authService.user$ | async as user; else login">
+  Eingeloggt
+  <hr>
+  <u class="btn" (click)="authService.logout()">Logout</u>
+
+</div>
+<ng-template #login>
+  <button class="btn fa fa-wrench" (click)="authService.googleLogin()">Login</button>
+</ng-template>

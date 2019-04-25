@@ -12,17 +12,20 @@ import { SpendenComponent } from './spenden/spenden.component';
 import { ImpressumComponent } from './impressum/impressum.component';
 import { StartseiteComponent } from './startseite/startseite.component';
 import { ChronikelementComponent } from './chronikelement/chronikelement.component';
-
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabase,  } from 'angularfire2/database';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireModule } from 'angularfire2';
 import {environment} from '../environments/environment';
-import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FirestoreService} from './services/firestore_service';
 import { ModalComponent } from './modal/modal.component';
 import { FooterComponent } from './footer/footer.component';
+import {AuthService} from "./services/auth.service";
+import { LoginComponent } from './login/login.component';
+import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 
 const appRoutes: Routes = [
@@ -63,6 +66,7 @@ const appRoutes: Routes = [
     ChronikelementComponent,
     ModalComponent,
     FooterComponent,
+    LoginComponent,
   ],
   imports: [
     // AngularFireModule.initializeApp(environment.firebase),
@@ -72,10 +76,21 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFirestoreModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    AngularFireAuthModule,
+    NgxAuthFirebaseUIModule.forRoot(environment.firebase,
+      ()=>'MIM',
+      {enableFirestoreSync: false,
+        toastMessageOnAuthSuccess: true, // whether to open/show a snackbar message on auth success - default : true
+        toastMessageOnAuthError: true
+    })
   ],
 
-  providers: [FirestoreService],
+  providers: [
+    FirestoreService,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
