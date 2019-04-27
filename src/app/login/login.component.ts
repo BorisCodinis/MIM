@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import * as firebase from "firebase";
+import * as firebase from 'firebase';
+import {$} from 'protractor';
 
 @Component({
   selector: 'app-login',
@@ -10,15 +11,21 @@ import * as firebase from "firebase";
 
 
 export class LoginComponent implements OnInit {
-
+  email = '';
+  pw = '';
 
   constructor(private authService: AuthService) {
+    console.log(document.getElementById('loginDialog'));
   }
 
   ngOnInit() {
   }
 
-  signOut(){
+  login(email: string, pw: string) {
+    this.authService.emailLogin(email, pw);
+  }
+
+  signOut() {
     this.authService.logout();
   }
 

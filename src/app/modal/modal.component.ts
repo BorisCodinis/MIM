@@ -20,7 +20,7 @@ export class ModalComponent implements OnInit {
   onSubmit() {
     if (this.element.titel !== '' && this.element.subtitel !== '' && this.element.inhalt !== '') {
       console.log(this.element.titel, this.element.subtitel, this.element.inhalt);
-      this.service.postChronikelement(this.element)
+      this.service.postChronikelement(this.element);
       this.element.titel = '';
       this.element.subtitel = '';
       this.element.inhalt = '';

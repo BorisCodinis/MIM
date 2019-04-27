@@ -1,9 +1,44 @@
-<div *ngIf="authService.user$ | async as user; else login">
+<div *ngIf="authService.isLoggedIn as user; else login">
   Eingeloggt
   <hr>
-  <u class="btn" (click)="authService.logout()">Logout</u>
+  <u class="btn" (click)="signOut()">Logout</u>
 
 </div>
 <ng-template #login>
-  <button class="btn fa fa-wrench" (click)="authService.googleLogin()">Login</button>
+  <button class="btn fa fa-wrench" data-toggle="modal" data-target="#loginDialog">Login</button>
 </ng-template>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="loginDialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Admin Login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="authService.emailLogin(email, pw)">
+        <div class="row">
+          <div class="col">
+
+            <input type="email" class="form-control form-control-lg" placeholder="admin@mail.xx" name="email" id="email"  [(ngModel)]="email">
+
+          </div>
+          <div class="col">
+            <input type="password" class="form-control form-control-lg" placeholder="Passwort" name="passwort" id="passwort"  [(ngModel)]="pw">
+          </div>
+        </div>
+        <div class="row mt-lg-3">
+          <div class="col offset-md-10">
+            <button type="submit" class="btn btn-success" data-dismiss="loginDialog" id="loginButton" >Login</button>
+          </div>
+
+        </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+

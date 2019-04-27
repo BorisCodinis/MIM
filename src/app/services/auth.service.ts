@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth, AngularFireAuthModule } from  "@angular/fire/auth";
-import { auth, User} from 'firebase';
-import { Observable} from "rxjs";
-
+import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
+import { User} from 'firebase';
+import { from, Observable} from 'rxjs';
 import { firebase } from '@firebase/app';
 
 import {
@@ -10,37 +9,29 @@ import {
   AngularFirestoreDocument
 } from '@angular/fire/firestore';
 
-  @Injectable({
+@Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  user$: Observable<User>;
-  constructor(private authService: AngularFireAuth, private af: AngularFire) {
-    this.authService.authState.subscribe(auth =>{
-      if (auth)
-        localStorage.setItem('user', 'authorized');
+  authState: any = null;
 
+  constructor(private afAuth: AngularFireAuth) {
+    this.afAuth.authState.subscribe((auth) => {
+      this.authState = auth;
     });
   }
-
-  async googleLogin(){
-    this.authService.auth
-  }
-
-  async logout(){
+  public async logout() {
+    this.afAuth.auth.signOut();
   }
 
   get isLoggedIn(): boolean {
-    if (this.user$)
-      return true;
-    else
-      return false;
+   return this.authState !== null;
 
   }
 
-    emailLogin(email: string, password: string) {
-      return this.authService.auth
-        .signInWithEmailAndPassword(email, password);
+  emailLogin(email: string, password: string) {
+    return this.afAuth.auth
+      .signInWithEmailAndPassword(email, password);
 
-    }
+  }
 }
