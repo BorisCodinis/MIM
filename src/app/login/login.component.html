@@ -9,7 +9,7 @@
 </ng-template>
 
 <div class="modal fade" tabindex="-1" role="dialog" id="loginDialog">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog" role="document" >
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Admin Login</h5>
@@ -31,7 +31,7 @@
         </div>
         <div class="row mt-lg-3">
           <div class="col offset-md-10">
-            <button type="submit" class="btn btn-success" data-dismiss="loginDialog" id="loginButton" >Login</button>
+            <button type="button" (click)="authService.emailLogin(email, pw)" class="btn btn-success" data-dismiss="#loginDialog" id="loginButton" >Login</button>
           </div>
 
         </div>

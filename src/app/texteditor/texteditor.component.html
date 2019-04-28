@@ -1,0 +1,25 @@
+<form (ngSubmit)="onSubmit()" id="add-chronikelement">
+  <div class="form-group">
+    <label for="title">
+      Titel:
+    </label>
+    <input type="text" class="form-control form-control-lg" name="title" placeholder="Titel" id="title" [(ngModel)]="element.titel">
+  </div>
+  <div class="form-group ">
+    <label for="subtitel">
+      Subtitel:
+    </label>
+    <input type="text" class="form-control form-control-lg" placeholder="Beschreibung des Beitrags" name="subtitel" id="subtitel" [(ngModel)]="element.subtitel">
+  </div>
+  <form [formGroup]="editorForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="inhalt">Inhalt</label>
+      <quill-editor formControlName="editor" name="inhalt" id="inhalt" [(ngModel)]="element.inhalt"></quill-editor>
+    </div>
+
+  </form>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+    <input type="button" (click)="onSubmit()" data-dismiss="modal" value="Speichern" class="btn">
+  </div>
+</form>

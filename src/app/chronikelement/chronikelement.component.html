@@ -1,9 +1,10 @@
-<ul *ngFor="let element of chronikelemente">
+<ul *ngFor="let element of service.items2">
  <li>
-   <div class="card container-fluid p-lg-3 m-lg-1">
+   <div class="card container-fluid p-lg-3 m-lg-1 shadow bg-transparent rounded">
       <h2 class="card-title ">{{ element.titel }}</h2>
         <h5 class="card-subtitle mb-2 text-muted"> {{ element.subtitel }}</h5>
-      <p class="card-text text-break">{{ element.inhalt }}</p>
+      <p class="card-text text-break" ng-bind-html [innerHTML]="element.inhalt | sanitizeHtml"></p>
+     <span class = card-footer>{{ element.ts | date }}</span>
    </div>
  </li>
 

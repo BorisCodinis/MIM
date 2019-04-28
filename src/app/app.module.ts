@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AppComponent } from './root/app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
@@ -13,20 +13,20 @@ import { ImpressumComponent } from './impressum/impressum.component';
 import { StartseiteComponent } from './startseite/startseite.component';
 import { ChronikelementComponent } from './chronikelement/chronikelement.component';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFireDatabase,  } from 'angularfire2/database';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireModule } from 'angularfire2';
-import {environment} from '../environments/environment';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {FirestoreService} from './services/firestore_service';
+import { environment} from '../environments/environment';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FirestoreService } from './services/firestore_service';
 import { ModalComponent } from './modal/modal.component';
 import { FooterComponent } from './footer/footer.component';
-import {AuthService} from "./services/auth.service";
+import { AuthService} from "./services/auth.service";
 import { LoginComponent } from './login/login.component';
-import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-
+import { TexteditorComponent } from './texteditor/texteditor.component';
+import { SanitizeHtmlPipe } from './SanitizeHtmlPipe';
+import { QuillModule } from 'ngx-quill';
+import { ToastrModule } from "ngx-toastr";
 
 const appRoutes: Routes = [
   { path: 'start', component: StartseiteComponent },
@@ -67,6 +67,8 @@ const appRoutes: Routes = [
     ModalComponent,
     FooterComponent,
     LoginComponent,
+    TexteditorComponent,
+    SanitizeHtmlPipe
   ],
   imports: [
     // AngularFireModule.initializeApp(environment.firebase),
@@ -76,15 +78,13 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFirestoreModule,
+    AngularFirestoreModule,
     FormsModule,
     BrowserAnimationsModule,
     AngularFireAuthModule,
-    NgxAuthFirebaseUIModule.forRoot(environment.firebase,
-      ()=>'MIM',
-      {enableFirestoreSync: false,
-        toastMessageOnAuthSuccess: true, // whether to open/show a snackbar message on auth success - default : true
-        toastMessageOnAuthError: true
-    })
+    QuillModule,
+    ReactiveFormsModule,
+    ToastrModule.forRoot()
   ],
 
   providers: [

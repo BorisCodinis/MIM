@@ -7,14 +7,6 @@ import {Observable} from 'rxjs';
 
 
 const elementList: string [] = new Array();
-// const elementList = new Array<Array<string>>();
-
-
-
-
-
-
-
 
 @Component({
   selector: 'app-chronikelement',
@@ -29,9 +21,10 @@ export class ChronikelementComponent implements OnInit {
   constructor(private service: FirestoreService) {}
 
   ngOnInit() {
-    this.service.getChronikelemente().subscribe(items => {
-      this.chronikelemente = items;
-    });
+
+      this.chronikelemente = this.service.getChronikelemente();
+
+
   }
 
 }

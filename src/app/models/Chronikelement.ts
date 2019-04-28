@@ -8,7 +8,7 @@ export class Chronikelement {
     this.titel = '';
     this.subtitel = '';
     this.inhalt = '';
-    this.ts = '';
+    this.ts = new Date().toLocaleTimeString();
   }
 
 }
