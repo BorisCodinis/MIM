@@ -14,6 +14,7 @@ import { StartseiteComponent } from './startseite/startseite.component';
 import { ChronikelementComponent } from './chronikelement/chronikelement.component';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireModule } from 'angularfire2';
 import { environment} from '../environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -78,7 +79,7 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFirestoreModule,
-    AngularFirestoreModule,
+    AngularFireStorageModule,
     FormsModule,
     BrowserAnimationsModule,
     AngularFireAuthModule,

@@ -3,6 +3,9 @@
   width: 70px;
   max-height: 70px; /* height of the navbar */
 }
+.navbar {
+  font-family: Merriweather;
+}
 /*
 .navbar-title{
   font-size: 3.5vw;
