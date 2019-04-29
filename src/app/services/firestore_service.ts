@@ -7,6 +7,9 @@ import { environment } from 'src/environments/environment';
 import * as firebase from 'firebase';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Chronikelement } from '../models/Chronikelement';
+import {StorageService} from "./storage.service";
+import {el} from "@angular/platform-browser/testing/src/browser_util";
+import {ToastrService} from "ngx-toastr";
 
 @Injectable({
   providedIn: 'root'
@@ -17,13 +20,13 @@ export class FirestoreService {
   items2 = [];
   kontaktTxt: Observable<any>;
 
-  constructor( private db: AngularFireDatabase, private afs: AngularFirestore) {
+  constructor( private db: AngularFireDatabase, private afs: AngularFirestore, private toastr: ToastrService) {
     this.itemsCollection = this.afs.collection('Startseite/Chronikelemente/items');
     //this.items =
     this.afs.collection('Startseite/Chronikelemente/items').snapshotChanges().subscribe(data => {
       this.items2 = [];
       data.forEach( a => {
-        let item: any = a.payload.doc.data()
+        let item: any = a.payload.doc.data();
         item.id = a.payload.doc.id;
         this.items2.push(item);
         this.items2.sort((a,b) => {
@@ -38,8 +41,15 @@ export class FirestoreService {
   }
 
   postChronikelement(element: Chronikelement) {
-    this.itemsCollection.add({titel: element.titel, subtitel: element.subtitel, inhalt: element.inhalt, ts: new Date().getTime().toString()});
-}
+    this.itemsCollection.add({id : element.id, titel: element.titel, subtitel: element.subtitel, inhalt: element.inhalt, ts: new Date().getTime().toString(), paths: element.paths});
+  }
+
+  deleteChronikelement(elementid: string) {
+    this.afs.doc(`Startseite/Chronikelemente/items/${elementid}`).delete().then(a=>{
+      this.toastr.show('Element gelöscht', 'Aktion Erfolgreich');
+    });
+
+  }
 
   updateChronikelement(item) {
     this.afs.doc('Startseite/Chronikelemente/items/${item.id}').update({

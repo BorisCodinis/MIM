@@ -16,7 +16,8 @@
       <label for="inhalt">Inhalt</label>
       <quill-editor formControlName="editor" name="inhalt" id="inhalt" [(ngModel)]="element.inhalt"></quill-editor>
     </div>
-
+    <input type="file" (change)="upload($event)" accept=".png,.jpg">
+    <progress class="progress-bar progress-bar-striped bg-success" role="progressbar" max="100" [value]="(afStorage.uploadProgress | async)"></progress>
   </form>
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>

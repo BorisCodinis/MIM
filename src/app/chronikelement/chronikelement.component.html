@@ -4,7 +4,22 @@
       <h2 class="card-title ">{{ element.titel }}</h2>
         <h5 class="card-subtitle mb-2 text-muted"> {{ element.subtitel }}</h5>
       <p class="card-text text-break" ng-bind-html [innerHTML]="element.inhalt | sanitizeHtml"></p>
-     <span class = card-footer>{{ element.ts | date }}</span>
+     <div *ngIf="element.paths !== []" class="card-img-bottom">
+       lol
+      <div *ngFor="let img of element.paths" class="container">
+        <img *ngIf="afStorage.ref(img).getDownloadURL() | async; let src" [src]="src">
+      </div>
+     </div>
+     <div class = card-footer>
+       <div class="row">
+         <div class="col">
+         {{ element.ts | date }}
+         </div>
+         <div *ngIf="authService.isLoggedIn" class="col text-right fa fa-trash">
+           <u (click)="this.service.deleteChronikelement(element.id)">Eintrag löschen</u>
+         </div>
+       </div>
+     </div>
    </div>
  </li>
 

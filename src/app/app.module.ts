@@ -24,10 +24,11 @@ import { FooterComponent } from './footer/footer.component';
 import { AuthService} from "./services/auth.service";
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { TexteditorComponent } from './texteditor/texteditor.component';
+import { AddChronikelementFormComponent } from './addChronikelementForm/addChronikelementForm.component';
 import { SanitizeHtmlPipe } from './SanitizeHtmlPipe';
 import { QuillModule } from 'ngx-quill';
 import { ToastrModule } from "ngx-toastr";
+import {StorageService} from "./services/storage.service";
 
 const appRoutes: Routes = [
   { path: 'start', component: StartseiteComponent },
@@ -68,7 +69,7 @@ const appRoutes: Routes = [
     ModalComponent,
     FooterComponent,
     LoginComponent,
-    TexteditorComponent,
+    AddChronikelementFormComponent,
     SanitizeHtmlPipe
   ],
   imports: [
@@ -90,7 +91,8 @@ const appRoutes: Routes = [
 
   providers: [
     FirestoreService,
-    AuthService
+    AuthService,
+    StorageService
   ],
   bootstrap: [AppComponent]
 })
