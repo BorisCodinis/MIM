@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Observable } from 'rxjs';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Chronikelement } from '../models/Chronikelement';
 import { ToastrService } from 'ngx-toastr';
-import {el} from '@angular/platform-browser/testing/src/browser_util';
 import {Projektelement} from '../models/Projektelement';
 
 @Injectable({
@@ -34,7 +32,7 @@ export class FirestoreService {
       });
     } );
 
-    this.projektelementeCollection = this.afs.collection('Startseite/Projektelemente/items');
+    this.projektelementeCollection = this.afs.collection('Projektseite/Projektelemente/items');
     this.projektelementeCollection.snapshotChanges().subscribe(data => {
       this.projektelementList = [];
       data.forEach( a => {
@@ -63,13 +61,13 @@ export class FirestoreService {
           this.wirTxt.push(item);
           console.log(item);
         });
-      })
+      });
 
     this.afs.collection('spenden').snapshotChanges()
       .subscribe(e => {
         e.forEach(elem => {
           const item: any = elem.payload.doc.data();
-          this.kontaktTxt.push(item);
+          this.spendenTxt.push(item);
           console.log(item);
         });
       });
@@ -96,7 +94,8 @@ export class FirestoreService {
   }
 
   deleteProjektelement(elementid: string) {
-    this.afs.doc(`Startseite/Projektelemente/items/${elementid}`).delete().then(a => {
+    console.log(elementid);
+    this.afs.doc(`Projektseite/Projektelemente/items/${elementid}`).delete().then(a => {
       this.toastr.show('Element gelöscht', 'Aktion Erfolgreich');
     });
   }

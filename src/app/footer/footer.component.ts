@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import {FirestoreService} from '../services/firestore_service';
-import {StorageService} from '../services/storage.service';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-footer',

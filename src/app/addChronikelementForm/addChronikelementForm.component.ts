@@ -3,8 +3,6 @@ import {FormControl, FormGroup} from '@angular/forms';
 import { Chronikelement } from '../models/Chronikelement';
 import { ToastrService } from 'ngx-toastr';
 import { StorageService } from '../services/storage.service';
-import * as Quill from 'quill';
-import { QuillModule } from 'ngx-quill';
 import {FirestoreService} from '../services/firestore_service';
 
 @Component({
@@ -36,7 +34,7 @@ export class AddChronikelementFormComponent implements OnInit {
       [{ font: [] }],
       [{ align: [] }],
 
-      []
+      ['link']
     ]
   };
 
@@ -63,7 +61,6 @@ export class AddChronikelementFormComponent implements OnInit {
     this.afStorage.cardImgUpload(event);
     this.element.paths = this.afStorage.paths;
     console.log(this.element.paths);
-    this.afStorage.paths = [];
   }
 
   onSubmit() {

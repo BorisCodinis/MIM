@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { StorageService } from '../services/storage.service';
 import { FirestoreService } from '../services/firestore_service';
 import { ToastrService } from 'ngx-toastr';
-import {Projektelement} from '../models/Projektelement';
-import {FormControl, FormGroup} from '@angular/forms';
+import { Projektelement } from '../models/Projektelement';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-add-projektelement-form',
@@ -57,7 +57,6 @@ export class AddProjektelementFormComponent implements OnInit {
     this.afStorage.projektImageUpload(event);
     this.element.paths = this.afStorage.projektPaths;
     console.log(this.element.paths);
-    this.afStorage.projektPaths = [];
   }
 
   onSubmit() {
@@ -68,11 +67,12 @@ export class AddProjektelementFormComponent implements OnInit {
       this.element.subtitel = '';
       this.element.inhalt = '';
       this.element.paths = [];
-      this.afStorage.paths = [];
+      this.afStorage.projektPaths = [];
       this.toastr.success('Aktion erfolgreich', 'Chronikelement hinzugefügt!');
     } else {
       this.toastr.error('Aktion fehlgeschlagen', 'Jedes Feld ausfüllen!');
     }
+
   }
 
 }

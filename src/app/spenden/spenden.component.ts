@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FirestoreService} from "../services/firestore_service";
 
 @Component({
   selector: 'app-spenden',
@@ -6,8 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./spenden.component.css']
 })
 export class SpendenComponent implements OnInit {
+  displayText = this.service.spendenTxt;
 
-  constructor() { }
+  constructor(private service: FirestoreService) { }
 
   ngOnInit() {
   }

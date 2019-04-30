@@ -1,10 +1,10 @@
-<ul *ngFor="let element of service.projektelementList">
+<ul class="container-fluid" *ngFor="let element of service.projektelementList">
   <li>
     <div class="container-fluid p-lg-3 m-lg-5" >
-      <h2 class="card-title ">{{ element.titel }}</h2>
-      <span *ngIf="authService.isLoggedIn" class="col text-right fa fa-trash-o">
-            <u (click)="this.service.deleteProjektelement(element.id)">    Eintrag löschen</u>
-          </span>
+      <div class="d-inline">
+      <span><h2 class="card-title ">{{ element.titel }}</h2></span>
+
+      </div>
       <h5 class="card-subtitle mb-2 text-muted"> {{ element.subtitel }}</h5>
       <span class="card-text text-break" ng-bind-html [innerHTML]="element.inhalt | sanitizeHtml"></span>
       <div *ngIf="element.paths.length !== 0" class="card-img-bottom">
@@ -16,7 +16,9 @@
         <div class="row">
           <div class="col">
           </div>
-
+          <span *ngIf="authService.isLoggedIn" class="col text-right fa fa-trash-o">
+            <u (click)="service.deleteProjektelement(element.id)">    Eintrag löschen</u>
+      </span>
           <hr>
         </div>
       </div>

@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AngularFireStorage, AngularFireStorageReference } from 'angularfire2/storage'
-import {map} from 'rxjs/operators';
-import {Observable} from 'rxjs';
-import {forEach} from '@angular/router/src/utils/collection';
+import { AngularFireStorage } from 'angularfire2/storage'
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

@@ -1,3 +1,11 @@
-<p>
-  spenden works!
-</p>
+<div class="container mb-lg-5 mt-lg-4">
+  <div  *ngFor="let txt of displayText">
+    <div class="spende" [innerHTML]="txt.text | sanitizeHtml">
+
+    </div>
+    <div class="iban fa fa-bank mt-lg-2">
+      {{ txt.iban }}
+    </div>
+  </div>
+
+</div>

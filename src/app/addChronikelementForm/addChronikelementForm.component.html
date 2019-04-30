@@ -17,7 +17,7 @@
       <quill-editor [style]="editorStyle" [modules]="config" formControlName="editor" name="inhalt" id="inhalt" [(ngModel)]="element.inhalt"></quill-editor>
     </div>
     <label for="upload">Datei Hochladen:</label><br>
-    <input type="file" name="upload" id="upload" (change)="upload($event)" accept=".png,.jpg">
+    <input type="file" name="upload" id="upload" (change)="upload($event)" accept=".png,.jpg,.jpeg,.mp4,.wav">
     <progress class="progress-bar progress-bar-striped bg-success -align-right" role="progressbar" max="100" [value]="(afStorage.cardUploadProgress | async)"></progress>
   </form>
   <div class="modal-footer">

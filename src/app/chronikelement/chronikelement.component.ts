@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Chronikelement} from '../models/Chronikelement';
-import { AngularFireStorage, AngularFireStorageReference } from 'angularfire2/storage';
-import * as firebase from 'firebase';
-import {FirestoreService} from '../services/firestore_service';
-import {Observable} from 'rxjs';
-import {StorageService} from '../services/storage.service';
-import {AuthService} from '../services/auth.service';
-import {forEach} from '@angular/router/src/utils/collection';
+import { AngularFireStorage } from 'angularfire2/storage';
+import { FirestoreService } from '../services/firestore_service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-chronikelement',
