@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FirestoreService} from '../services/firestore_service';
 
 @Component({
   selector: 'app-wir',
@@ -6,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./wir.component.css']
 })
 export class WirComponent implements OnInit {
-
-  constructor() { }
+  displayText = this.service.wirTxt;
+  constructor(private service: FirestoreService) { }
 
   ngOnInit() {
   }

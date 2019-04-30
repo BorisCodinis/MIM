@@ -8,21 +8,28 @@ import {forEach} from '@angular/router/src/utils/collection';
   providedIn: 'root'
 })
 export class StorageService {
-  uploadProgress: Observable<number>;
+  cardUploadProgress: Observable<number>;
+  projektUploadProgress: Observable<number>;
   randomId: string;
   public paths: string[];
-  constructor(private afStorage: AngularFireStorage) { this.paths = []; }
+  public projektPaths: string[];
+  constructor(private afStorage: AngularFireStorage) { this.paths = []; this.projektPaths = []; }
 
-  upload(event) {
-    // create a random id
-    this.randomId = Math.random().toString(36).substring(2);
-    // create a reference to the storage bucket location
+  cardImgUpload(event) {
+    this.randomId = 'startseite/' + Math.random().toString(36).substring(2);
     const ref = this.afStorage.ref(this.randomId);
     this.paths.push(this.randomId);
-    // the put method creates an AngularFireUploadTask
-    // and kicks off the upload
     const task = ref.put(event.target.files[0]);
-    this.uploadProgress = task.snapshotChanges()
+    this.cardUploadProgress = task.snapshotChanges()
+      .pipe(map(s => (s.bytesTransferred / s.totalBytes) * 100));
+  }
+
+  projektImageUpload(event) {
+    this.randomId = 'projekte/' + Math.random().toString(36).substring(2);
+    const ref = this.afStorage.ref(this.randomId);
+    this.projektPaths.push(this.randomId);
+    const task = ref.put(event.target.files[0]);
+    this.projektUploadProgress = task.snapshotChanges()
       .pipe(map(s => (s.bytesTransferred / s.totalBytes) * 100));
   }
 }

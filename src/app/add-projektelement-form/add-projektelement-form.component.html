@@ -1,24 +1,24 @@
-<form (ngSubmit)="onSubmit()" id="add-chronikelement">
+<form (ngSubmit)="onSubmit()" id="add-projektelement">
   <div class="form-group">
     <label for="title">
       Titel:
     </label>
     <input type="text" class="form-control form-control-lg" name="title" placeholder="Titel" id="title" [(ngModel)]="element.titel">
   </div>
-  <div class="form-group ">
+  <div class="form-group">
     <label for="subtitel">
       Subtitel:
     </label>
-    <input type="text" class="form-control form-control-lg" placeholder="Beschreibung des Beitrags" name="subtitel" id="subtitel" [(ngModel)]="element.subtitel">
+    <input type="text" class="form-control form-control-lg" placeholder="Zusammenfassung des Beitrags" name="subtitel" id="subtitel" [(ngModel)]="element.subtitel">
   </div>
   <form [formGroup]="editorForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label for="inhalt">Inhalt:</label>
-      <quill-editor [style]="editorStyle" [modules]="config" formControlName="editor" name="inhalt" id="inhalt" [(ngModel)]="element.inhalt"></quill-editor>
+      <label for="inhalt2">Inhalt:</label>
+      <quill-editor [style]="editorStyle" [modules]="config" formControlName="editor2" name="inhalt" id="inhalt2" [(ngModel)]="element.inhalt"></quill-editor>
     </div>
     <label for="upload">Datei Hochladen:</label><br>
     <input type="file" name="upload" id="upload" (change)="upload($event)" accept=".png,.jpg">
-    <progress class="progress-bar progress-bar-striped bg-success -align-right" role="progressbar" max="100" [value]="(afStorage.cardUploadProgress | async)"></progress>
+    <progress class="progress-bar progress-bar-striped bg-success -align-right" role="progressbar" max="100" [value]="(afStorage.projektUploadProgress | async)"></progress>
   </form>
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>

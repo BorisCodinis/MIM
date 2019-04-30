@@ -20,7 +20,7 @@ export class ChronikelementComponent implements OnInit {
   constructor(private service: FirestoreService, private afStorage: AngularFireStorage, private authService: AuthService) {
   }
   ngOnInit() {
-    this.chronikelemente = this.service.items2;
+    this.chronikelemente = this.service.chronikelementList;
   }
 
 }

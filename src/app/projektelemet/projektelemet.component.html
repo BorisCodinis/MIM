@@ -1,0 +1,26 @@
+<ul *ngFor="let element of service.projektelementList">
+  <li>
+    <div class="container-fluid p-lg-3 m-lg-5" >
+      <h2 class="card-title ">{{ element.titel }}</h2>
+      <span *ngIf="authService.isLoggedIn" class="col text-right fa fa-trash-o">
+            <u (click)="this.service.deleteProjektelement(element.id)">    Eintrag löschen</u>
+          </span>
+      <h5 class="card-subtitle mb-2 text-muted"> {{ element.subtitel }}</h5>
+      <span class="card-text text-break" ng-bind-html [innerHTML]="element.inhalt | sanitizeHtml"></span>
+      <div *ngIf="element.paths.length !== 0" class="card-img-bottom">
+        <span *ngFor="let img of element.paths" class="container-fluid"  >
+        <img *ngIf="img | downloadUrl | async as src" [src]="src" style="max-width: 39%; " class="m-md-1" >
+      </span>
+      </div>
+      <div class = "card-footer">
+        <div class="row">
+          <div class="col">
+          </div>
+
+          <hr>
+        </div>
+      </div>
+    </div>
+  </li>
+
+</ul>

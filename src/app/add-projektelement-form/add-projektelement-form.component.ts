@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
-import { Chronikelement } from '../models/Chronikelement';
-import { ToastrService } from 'ngx-toastr';
 import { StorageService } from '../services/storage.service';
-import * as Quill from 'quill';
-import { QuillModule } from 'ngx-quill';
-import {FirestoreService} from '../services/firestore_service';
+import { FirestoreService } from '../services/firestore_service';
+import { ToastrService } from 'ngx-toastr';
+import {Projektelement} from '../models/Projektelement';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
-  selector: 'app-addChronikelementForm',
-  templateUrl: './addChronikelementForm.component.html',
-  styleUrls: ['./addChronikelementForm.component.css']
+  selector: 'app-add-projektelement-form',
+  templateUrl: './add-projektelement-form.component.html',
+  styleUrls: ['./add-projektelement-form.component.css']
 })
-export class AddChronikelementFormComponent implements OnInit {
+export class AddProjektelementFormComponent implements OnInit {
+  public element = new Projektelement();
   editorForm: FormGroup;
   editorStyle = {
     height: '200px'
@@ -40,9 +39,6 @@ export class AddChronikelementFormComponent implements OnInit {
     ]
   };
 
-  public element = new Chronikelement();
-
-
   constructor(private service: FirestoreService, private toastr: ToastrService, private afStorage: StorageService) {
     this.element.id = '';
     this.element.titel = '';
@@ -53,22 +49,20 @@ export class AddChronikelementFormComponent implements OnInit {
 
   ngOnInit() {
     this.editorForm = new FormGroup({
-      editor: new FormControl(null)
+      editor2: new FormControl(null)
     });
-
   }
 
-
   public upload(event) {
-    this.afStorage.cardImgUpload(event);
-    this.element.paths = this.afStorage.paths;
+    this.afStorage.projektImageUpload(event);
+    this.element.paths = this.afStorage.projektPaths;
     console.log(this.element.paths);
-    this.afStorage.paths = [];
+    this.afStorage.projektPaths = [];
   }
 
   onSubmit() {
     if (this.element.titel !== '' && this.element.subtitel !== '' && this.element.inhalt !== '') {
-      this.service.postChronikelement(this.element);
+      this.service.postProjektelement(this.element);
       this.element.id = '';
       this.element.titel = '';
       this.element.subtitel = '';

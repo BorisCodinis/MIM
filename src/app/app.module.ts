@@ -30,6 +30,9 @@ import { QuillModule } from 'ngx-quill';
 import { ToastrModule } from 'ngx-toastr';
 import {StorageService} from './services/storage.service';
 import { DownloadUrlPipe } from './DownloadUrlPipe';
+import { ProjektelemetComponent } from './projektelemet/projektelemet.component';
+import { AddProjektelementFormComponent } from './add-projektelement-form/add-projektelement-form.component';
+import { ProjektModalComponent } from './projekt-modal/projekt-modal.component';
 
 const appRoutes: Routes = [
   { path: 'start', component: StartseiteComponent },
@@ -72,7 +75,10 @@ const appRoutes: Routes = [
     LoginComponent,
     AddChronikelementFormComponent,
     SanitizeHtmlPipe,
-    DownloadUrlPipe
+    DownloadUrlPipe,
+    ProjektelemetComponent,
+    AddProjektelementFormComponent,
+    ProjektModalComponent
   ],
   imports: [
     // AngularFireModule.initializeApp(environment.firebase),
@@ -98,4 +104,6 @@ const appRoutes: Routes = [
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+
+export class AppModule {}

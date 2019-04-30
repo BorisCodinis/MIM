@@ -1,13 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
-import { User} from 'firebase';
-import { from, Observable} from 'rxjs';
-import { firebase } from '@firebase/app';
-
-import {
-  AngularFirestore,
-  AngularFirestoreDocument
-} from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'

@@ -1,8 +1,6 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component,  OnInit} from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import * as firebase from 'firebase';
-import {$} from 'protractor';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

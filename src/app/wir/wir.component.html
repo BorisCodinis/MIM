@@ -1,0 +1,11 @@
+<div class="container mb-lg-5 mt-lg-4">
+    <div  *ngFor="let txt of displayText">
+      <div class="titel mb-md-3">
+        {{ txt.titel }}
+      </div>
+      <div class="txt" [innerHTML]="txt.text | sanitizeHtml">
+
+      </div>
+    </div>
+
+</div>

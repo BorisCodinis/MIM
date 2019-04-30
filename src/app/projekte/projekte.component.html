@@ -1,3 +1,16 @@
-<p>
-  projekte works!
-</p>
+<div style="text-align:center" class="mb-lg-4">
+  <h1>
+    Unsere Projekte:
+  </h1>
+</div>
+<div class="container">
+  <div class="float-right m-md-2">
+    <button *ngIf="authService.isLoggedIn" class="btn btn-primary" data-toggle="modal"  data-target="#newProjektItem"><i class="fa fa-plus"></i>
+      Hinzufügen
+    </button>
+  </div>
+  <app-projekt-modal></app-projekt-modal>
+  <div class="container" id="Projektelementlist">
+    <app-projektelemet class=""></app-projektelemet>
+  </div>
+</div>
