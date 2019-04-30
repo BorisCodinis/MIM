@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import { Chronikelement } from '../models/Chronikelement';
-import { ToastrService } from "ngx-toastr";
-import { StorageService } from "../services/storage.service";
+import { ToastrService } from 'ngx-toastr';
+import { StorageService } from '../services/storage.service';
 import * as Quill from 'quill';
-import { QuillModule } from 'ngx-quill'
-import {FirestoreService} from "../services/firestore_service";
+import { QuillModule } from 'ngx-quill';
+import {FirestoreService} from '../services/firestore_service';
 
 @Component({
   selector: 'app-addChronikelementForm',
@@ -17,7 +17,11 @@ export class AddChronikelementFormComponent implements OnInit {
   public element = new Chronikelement();
 
   constructor(private service: FirestoreService, private toastr: ToastrService, private afStorage: StorageService) {
-
+    this.element.id = '';
+    this.element.titel = '';
+    this.element.subtitel = '';
+    this.element.inhalt = '';
+    this.element.paths = [];
   }
 
   ngOnInit() {
@@ -30,20 +34,22 @@ export class AddChronikelementFormComponent implements OnInit {
   public upload(event) {
     this.afStorage.upload(event);
     this.element.paths = this.afStorage.paths;
-    console.log(this.element.paths)
+    console.log(this.element.paths);
+    this.afStorage.paths = [];
   }
 
   onSubmit() {
     if (this.element.titel !== '' && this.element.subtitel !== '' && this.element.inhalt !== '') {
-      console.log(this.element.titel, this.element.subtitel, this.element.inhalt, this.element.paths);
       this.service.postChronikelement(this.element);
+      this.element.id = '';
       this.element.titel = '';
       this.element.subtitel = '';
       this.element.inhalt = '';
+      this.element.paths = [];
       this.afStorage.paths = [];
       this.toastr.success('Aktion erfolgreich', 'Chronikelement hinzugefügt!');
     } else {
-      this.toastr.error('Aktion fehlgeschlagen', 'Jedes Feld ausfüllen!')
+      this.toastr.error('Aktion fehlgeschlagen', 'Jedes Feld ausfüllen!');
     }
   }
 

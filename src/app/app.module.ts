@@ -21,14 +21,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FirestoreService } from './services/firestore_service';
 import { ModalComponent } from './modal/modal.component';
 import { FooterComponent } from './footer/footer.component';
-import { AuthService} from "./services/auth.service";
+import { AuthService} from './services/auth.service';
 import { LoginComponent } from './login/login.component';
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddChronikelementFormComponent } from './addChronikelementForm/addChronikelementForm.component';
 import { SanitizeHtmlPipe } from './SanitizeHtmlPipe';
 import { QuillModule } from 'ngx-quill';
-import { ToastrModule } from "ngx-toastr";
-import {StorageService} from "./services/storage.service";
+import { ToastrModule } from 'ngx-toastr';
+import {StorageService} from './services/storage.service';
+import { DownloadUrlPipe } from './DownloadUrlPipe';
 
 const appRoutes: Routes = [
   { path: 'start', component: StartseiteComponent },
@@ -70,7 +71,8 @@ const appRoutes: Routes = [
     FooterComponent,
     LoginComponent,
     AddChronikelementFormComponent,
-    SanitizeHtmlPipe
+    SanitizeHtmlPipe,
+    DownloadUrlPipe
   ],
   imports: [
     // AngularFireModule.initializeApp(environment.firebase),

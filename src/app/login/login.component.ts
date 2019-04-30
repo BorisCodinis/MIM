@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
   pw = '';
 
   constructor(private authService: AuthService) {
-    console.log(document.getElementById('loginDialog'));
   }
 
   ngOnInit() {
